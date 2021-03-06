@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>light-color.xml</file>
+    </qresource>
+</RCC>

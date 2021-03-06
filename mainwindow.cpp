@@ -40,3 +40,8 @@ void MainWindow::on_installButton_clicked()
 
     close();
 }
+
+void MainWindow::on_cancelButton_clicked()
+{
+    close();
+}

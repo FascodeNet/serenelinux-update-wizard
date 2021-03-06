@@ -18,6 +18,8 @@ public:
 private slots:
     void on_installButton_clicked();
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
