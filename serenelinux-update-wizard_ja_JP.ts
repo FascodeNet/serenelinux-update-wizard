@@ -5,21 +5,25 @@
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="14"/>
+        <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="67"/>
         <source>Serene Linux Version 33.0.1 Updater</source>
         <translation>Serene Linux Version 33.0.1 Updater</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="27"/>
+        <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="68"/>
         <source>Update List</source>
         <translation>更新一覧</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="41"/>
+        <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="73"/>
         <source>Xfce Mugshot Fixed</source>
         <translation>Xfce Mugshotに関する修正</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="55"/>
+        <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="76"/>
         <source>Install</source>
         <translation>インストール</translation>
     </message>

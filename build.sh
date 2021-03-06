@@ -2,6 +2,6 @@
 mkdir build dist
 cd build
 cmake -GNinja ..
-ninja -j8
+cmake --build . --target all
 cp serenelinux-update-wizard ../dist/
-lrelease lrelease-qt5 ../serenelinux-update-wizard_ja_JP.ts -qm dist/serenelinux-update-wizard_ja_JP.qm
+lrelease-qt5 ../serenelinux-update-wizard_ja_JP.ts -qm ../dist/serenelinux-update-wizard_ja_JP.qm
