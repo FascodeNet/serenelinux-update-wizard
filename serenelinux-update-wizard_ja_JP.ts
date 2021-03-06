@@ -10,27 +10,31 @@
         <translation>Serene Linux Version 33.0.1 Updater</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="30"/>
         <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="68"/>
         <source>Update List</source>
         <translation>更新一覧</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="44"/>
+        <location filename="mainwindow.ui" line="112"/>
         <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="73"/>
         <source>Xfce Mugshot Fixed</source>
         <translation>Xfce Mugshotに関する修正</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="62"/>
+        <location filename="mainwindow.ui" line="52"/>
         <location filename="build/serenelinux-update-wizard_autogen/include/ui_mainwindow.h" line="76"/>
         <source>Install</source>
         <translation>インストール</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="85"/>
+        <location filename="mainwindow.ui" line="35"/>
+        <source>These contents will be updated.</source>
+        <translation>これらの内容が更新されます</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="75"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>キャンセル</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="34"/>
