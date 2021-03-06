@@ -10,13 +10,23 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
+#include <QFile>
+#include <QTranslator>
+#include <QDir>
 void update_sys();
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QApplication app(argc, argv);
+    QString lang_path = "serenelinux-update-wizard_" + QLocale::system().name();
+
+    QTranslator qtTranslator;
+    if(QFile::exists(lang_path + ".qm")){
+        std::cout << lang_path.toStdString() << std::endl;
+        qtTranslator.load(lang_path);
+        app.installTranslator(&qtTranslator);
+    }
     QCommandLineParser parser;
     parser.addHelpOption();
     QCommandLineOption nochildkun({"n","nochild"},"no child process");
