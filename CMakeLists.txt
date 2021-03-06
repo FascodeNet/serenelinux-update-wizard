@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
@@ -24,28 +24,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick LinguistTools REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick LinguistTools REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets LinguistTools REQUIRED)
 
 set(TS_FILES serenelinux-update-wizard_ja_JP.ts)
+add_executable(serenelinux-update-wizard
+  main.cpp
+  xfcemugshotkun.cpp
+  mainwindow.cpp
+  mainwindow.h
+  mainwindow.ui
+  ${TS_FILES}
+)
 
-if(ANDROID)
-    add_library(serenelinux-update-wizard SHARED
-      main.cpp
-      qml.qrc
-      ${TS_FILES}
-    )
-else()
-    add_executable(serenelinux-update-wizard
-      main.cpp
-      qml.qrc
-      ${TS_FILES}
-    )
-endif()
 
 target_compile_definitions(serenelinux-update-wizard
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(serenelinux-update-wizard
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
