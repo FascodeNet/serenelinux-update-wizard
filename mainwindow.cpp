@@ -5,7 +5,6 @@
 #include <string>
 
 #define UPDATE_VER "33.0.1"
-void update_xfcemugshotkun();
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -29,7 +28,6 @@ void MainWindow::on_installButton_clicked()
     system_release_f << UPDATE_VER << std::endl;
     system_release_f.close();
 
-    update_xfcemugshotkun();
     QMessageBox msgBox(this);
     msgBox.setText(tr("Success Update!"));
     msgBox.setWindowTitle(tr("Success Update!"));

@@ -24,16 +24,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Widgets LinguistTools REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets LinguistTools REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Widgets LinguistTools QuickControls2 REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Widgets LinguistTools QuickControls2 REQUIRED)
 QT5_ADD_RESOURCES(RESOURCES resource.qrc)
 set(TS_FILES serenelinux-update-wizard_ja_JP.ts)
 add_executable(serenelinux-update-wizard
   main.cpp
-  xfcemugshotkun.cpp
   mainwindow.cpp
   mainwindow.h
   mainwindow.ui
+  update_manager.cpp
+  update_manager.h
+  main.qml
   ${TS_FILES}
   ${RESOURCES}
 )
@@ -42,6 +44,6 @@ add_executable(serenelinux-update-wizard
 target_compile_definitions(serenelinux-update-wizard
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(serenelinux-update-wizard
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::QuickControls2 Qt${QT_VERSION_MAJOR}::Widgets)
 
 qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES} )

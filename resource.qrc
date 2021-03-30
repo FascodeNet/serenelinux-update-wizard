@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>light-color.xml</file>
+        <file>main.qml</file>
     </qresource>
 </RCC>

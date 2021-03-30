@@ -1,6 +1,6 @@
-#include <QApplication>
-#include <mainwindow.h>
 #include <QCommandLineParser>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -13,12 +13,14 @@
 #include <QFile>
 #include <QTranslator>
 #include <QDir>
+#include <QQuickStyle>
+#include "update_manager.h"
 void update_sys();
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-    QApplication app(argc, argv);
+    QQuickStyle::setStyle("Material");
+    QGuiApplication app(argc, argv);
     QString lang_path = "serenelinux-update-wizard_" + QLocale::system().name();
 
     QTranslator qtTranslator;
@@ -48,8 +50,25 @@ int main(int argc, char *argv[])
         execl(argv[0],argv[0]);
 
     }
-    MainWindow mainwin;
-    mainwin.show();
+    QQmlApplicationEngine engine;
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+                     &app, [url](QObject *obj, const QUrl &objUrl) {
+        if (!obj && url == objUrl)
+            QCoreApplication::exit(-1);
+    }, Qt::QueuedConnection);
+    engine.load(url);
+    QObject *root = engine.rootObjects().first();
+    update_manager managerkun;
+    QObject::connect(root,SIGNAL(enterOkButton()),&managerkun,SLOT(enterOkButton()));
+    QObject::connect(&managerkun,&update_manager::setMessage,[&](QString msg){
+    });
+    QObject::connect(&managerkun,&update_manager::setprogbar,[&](bool bartype){
+    });
+    QObject::connect(&managerkun,&update_manager::show_Finished_Message,[&](){
+        QObject* dialogkun=engine.rootObjects().first()->findChild<QObject*>("success_dialog");
+        dialogkun->setProperty("visible",true);
+    });
     return app.exec();
 }
 
